@@ -1,5 +1,3 @@
-
----
 apiVersion: v1
 kind: Service
 metadata:
@@ -13,7 +11,6 @@ spec:
       name: grpc
   selector:
     app: ingredient-service
-
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -32,7 +29,7 @@ spec:
     spec:
       containers:
         - name: ingredient-service
-          image: ghcr.io/thi-cnd/ingredient_service:v1.2.3 # {"$imagepolicy": "flux-system:ingredient-service"}
+          image: ghcr.io/thi-cnd/ingredient_service:v1.2.4 # {"$imagepolicy": "flux-system:ingredient-service"}
           ports:
             - containerPort: 8080
             - containerPort: 9090
@@ -53,7 +50,6 @@ spec:
               value: guest
             - name: RABBIT_EXCHANGE
               value: recipemanagement
-
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -74,8 +70,6 @@ spec:
                 name: ingredient-service
                 port:
                   number: 8080
-
----
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImagePolicy
@@ -88,7 +82,6 @@ spec:
   policy:
     semver:
       range: 1.x.x
-
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageRepository
