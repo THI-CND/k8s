@@ -25,7 +25,7 @@ spec:
         - name: POSTGRES_USER
           value: postgres
         - name: POSTGRES_MULTIPLE_DATABASES
-          value: recipe,collection,notification,users,ingredient,review
+          value: recipe,collection,notification,users,ingredient,review,shoppinglist
         ports:
         - containerPort: 5432
         volumeMounts:
