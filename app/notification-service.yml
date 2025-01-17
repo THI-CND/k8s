@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
         - name: notification-service
-          image: ghcr.io/thi-cnd/notification_service:v1.5.2 # {"$imagepolicy": "flux-system:notification-service"}
+          image: ghcr.io/thi-cnd/notification_service:v1.5.3 # {"$imagepolicy": "flux-system:notification-service"}
           ports:
             - containerPort: 8080
             - containerPort: 9090
