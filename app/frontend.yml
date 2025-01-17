@@ -136,7 +136,7 @@ spec:
               service:
                 name: feed-service
                 port:
-                  number: 8000
+                  number: 8085
           - path: /api/v1/shopping-list
             pathType: Prefix
             backend:
