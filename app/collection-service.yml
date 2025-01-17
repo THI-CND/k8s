@@ -31,7 +31,7 @@ spec:
     spec:
       containers:
         - name: collection-service
-          image: ghcr.io/thi-cnd/collection_service:v1.5.2 # {"$imagepolicy": "flux-system:collection-service"}
+          image: ghcr.io/thi-cnd/collection_service:v1.5.3 # {"$imagepolicy": "flux-system:collection-service"}
           ports:
             - containerPort: 8000
             - containerPort: 50051
