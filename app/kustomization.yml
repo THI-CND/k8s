@@ -8,3 +8,4 @@ resources:
   - review-service.yml
   - feed-service.yml
   - notification-service.yml
+  - frontend.yml
