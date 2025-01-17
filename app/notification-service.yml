@@ -32,7 +32,7 @@ spec:
     spec:
       containers:
         - name: notification-service
-          image: ghcr.io/thi-cnd/notification_service:latest
+          image: ghcr.io/thi-cnd/notification_service:v1.5.1 # {"$imagepolicy": "flux-system:notification-service"}
           ports:
             - containerPort: 8080
             - containerPort: 9090
@@ -90,3 +90,26 @@ spec:
                 name: notification-service
                 port:
                   number: 8080
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: notification-service
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: notification-service
+  policy:
+    semver:
+      range: 1.x.x
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: notification-service
+  namespace: flux-system
+spec:
+  image: ghcr.io/thi-cnd/notification_service
+  interval: 1m0s

@@ -31,7 +31,7 @@ spec:
     spec:
       containers:
         - name: feed-service
-          image: ghcr.io/thi-cnd/feed_service:latest
+          image: ghcr.io/thi-cnd/feed_service:v1.1.1 # {"$imagepolicy": "flux-system:feed-service"}
           ports:
             - containerPort: 8080
           env:
@@ -78,3 +78,26 @@ spec:
                 name: feed-service
                 port:
                   number: 8085
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: feed-service
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: feed-service
+  policy:
+    semver:
+      range: 1.x.x
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: feed-service
+  namespace: flux-system
+spec:
+  image: ghcr.io/thi-cnd/feed_service
+  interval: 1m0s

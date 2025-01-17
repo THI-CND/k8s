@@ -32,7 +32,7 @@ spec:
     spec:
       containers:
         - name: ingredient-service
-          image: ghcr.io/thi-cnd/ingredient_service:latest
+          image: ghcr.io/thi-cnd/ingredient_service:v1.2.3 # {"$imagepolicy": "flux-system:ingredient-service"}
           ports:
             - containerPort: 8080
             - containerPort: 9090
@@ -74,3 +74,27 @@ spec:
                 name: ingredient-service
                 port:
                   number: 8080
+
+---
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: ingredient-service
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: ingredient-service
+  policy:
+    semver:
+      range: 1.x.x
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: ingredient-service
+  namespace: flux-system
+spec:
+  image: ghcr.io/thi-cnd/ingredient_service
+  interval: 1m0s

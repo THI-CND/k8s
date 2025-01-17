@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: ghcr.io/thi-cnd/frontend:latest
+          image: ghcr.io/thi-cnd/frontend:v1.2.0 # {"$imagepolicy": "flux-system:frontend"}
           ports:
             - containerPort: 80
 
@@ -53,3 +53,26 @@ spec:
                 name: frontend
                 port:
                   number: 80
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: frontend
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: frontend
+  policy:
+    semver:
+      range: 1.x.x
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: frontend
+  namespace: flux-system
+spec:
+  image: ghcr.io/thi-cnd/frontend
+  interval: 1m0s

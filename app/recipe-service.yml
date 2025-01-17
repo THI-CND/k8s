@@ -31,7 +31,7 @@ spec:
     spec:
       containers:
         - name: recipe-service
-          image: ghcr.io/thi-cnd/recipe_service:latest
+          image: ghcr.io/thi-cnd/recipe_service:v1.7.0 # {"$imagepolicy": "flux-system:recipe-service"}
           ports:
             - containerPort: 8080
             - containerPort: 9090
@@ -83,3 +83,26 @@ spec:
                 name: recipe-service
                 port:
                   number: 8080
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: recipe-service
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: recipe-service
+  policy:
+    semver:
+      range: 1.x.x
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: recipe-service
+  namespace: flux-system
+spec:
+  image: ghcr.io/thi-cnd/recipe_service
+  interval: 1m0s

@@ -31,7 +31,7 @@ spec:
     spec:
       containers:
         - name: review-service
-          image: ghcr.io/thi-cnd/review_service:latest
+          image: ghcr.io/thi-cnd/review_service:v1.3.2 # {"$imagepolicy": "flux-system:review-service"}
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -76,3 +76,26 @@ spec:
                 name: review-service
                 port:
                   number: 8084
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: review-service
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: review-service
+  policy:
+    semver:
+      range: 1.x.x
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: review-service
+  namespace: flux-system
+spec:
+  image: ghcr.io/thi-cnd/review_service
+  interval: 1m0s

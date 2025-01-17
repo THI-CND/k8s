@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
         - name: collection-service
-          image: ghcr.io/thi-cnd/collection_service:latest
+          image: ghcr.io/thi-cnd/collection_service:v1.5.1 # {"$imagepolicy": "flux-system:collection-service"}
           ports:
             - containerPort: 8000
             - containerPort: 50051
@@ -102,3 +102,26 @@ spec:
                 name: collection-service
                 port:
                   number: 8000
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: collection-service
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: collection-service
+  policy:
+    semver:
+      range: 1.x.x
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: collection-service
+  namespace: flux-system
+spec:
+  image: ghcr.io/thi-cnd/collection_service
+  interval: 1m0s
