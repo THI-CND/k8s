@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
 - userservice-policy.yaml
 - userservice-registry.yaml
+- flux-system-automation.yaml
