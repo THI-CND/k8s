@@ -11,7 +11,7 @@ spec:
     - port: 9009
       name: grpc
   selector:
-    app: shopping-list-service
+    app: shoppinglist-service
 
 ---
 apiVersion: apps/v1
