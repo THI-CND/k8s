@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
         - name: user-service
-          image: ghcr.io/thi-cnd/user_service:v1.0.4 # {"$imagepolicy": "flux-system:user_service"}
+          image: ghcr.io/thi-cnd/user_service:v1.0.4 # {"$imagepolicy": "flux-system:user-service"}
           ports:
             - containerPort: 8082
             - containerPort: 8081
@@ -84,11 +84,11 @@ spec:
 apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImagePolicy
 metadata:
-  name: user_Service
+  name: user-service
   namespace: flux-system
 spec:
   imageRepositoryRef:
-    name: user_service
+    name: user-service
   policy:
     semver:
       range: 1.x.x
@@ -97,7 +97,7 @@ spec:
 apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageRepository
 metadata:
-  name: user_service
+  name: user-service
   namespace: flux-system
 spec:
   image: ghcr.io/thi-cnd/user_service
