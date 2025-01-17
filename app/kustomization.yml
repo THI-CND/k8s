@@ -9,3 +9,4 @@ resources:
   - feed-service.yml
   - notification-service.yml
   - frontend.yml
+  - shoppinglist-service.yml
