@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
         - name: user-service
-          image: ghcr.io/thi-cnd/user_service:v1.0.4 # {"$imagepolicy": "flux-system:podinfo"}
+          image: ghcr.io/thi-cnd/user_service:v1.0.4 # {"$imagepolicy": "flux-system:user_service"}
           ports:
             - containerPort: 8082
             - containerPort: 8081
