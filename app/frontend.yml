@@ -110,14 +110,14 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: ingredients-service
+                name: ingredient-service
                 port:
                   number: 8080
           - path: /api/v2/ingredients
             pathType: Prefix
             backend:
               service:
-                name: ingredients-service
+                name: ingredient-service
                 port:
                   number: 8080
           

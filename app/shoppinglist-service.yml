@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: shopping-list-service
+  name: shoppinglist-service
   namespace: recipe-app
 spec:
   ports:
@@ -17,20 +17,20 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: shopping-list-service
+  name: shoppinglist-service
   namespace: recipe-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: shopping-list-service
+      app: shoppinglist-service
   template:
     metadata:
       labels:
-        app: shopping-list-service
+        app: shoppinglist-service
     spec:
       containers:
-        - name: shopping-list-service
+        - name: shoppinglist-service
           image: ghcr.io/thi-cnd/shoppinglist_service:v1.3.0 # {"$imagepolicy": "flux-system:shopping-list-service"}
           ports:
             - containerPort: 3000
@@ -70,7 +70,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: shopping-list-service
+                name: shoppinglist-service
                 port:
                   number: 3000
 
