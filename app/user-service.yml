@@ -78,3 +78,27 @@ spec:
                 name: user-service
                 port:
                   number: 8082
+
+---
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: user_Service
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: user_service
+  policy:
+    semver:
+      range: 1.x.x
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: user_service
+  namespace: flux-system
+spec:
+  image: ghcr.io/thi-cnd/user_service
+  interval: 1m0s
