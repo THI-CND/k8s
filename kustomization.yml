@@ -7,3 +7,4 @@ resources:
 - rabbitmq/rabbitmq.yml
 - redis/redis.yml
 - fluent-bit/fluent-bit.yml
+- podinfo
