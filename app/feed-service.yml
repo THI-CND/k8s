@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
         - name: feed-service
-          image: ghcr.io/thi-cnd/feed_service:v1.1.2 # {"$imagepolicy": "flux-system:feed-service"}
+          image: ghcr.io/thi-cnd/feed_service:v1.1.4 # {"$imagepolicy": "flux-system:feed-service"}
           ports:
             - containerPort: 8080
           env:
