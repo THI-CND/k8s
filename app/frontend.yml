@@ -40,7 +40,7 @@ metadata:
     traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
   rules:
-    - host: frontend.k8s.bieggerm.com
+    - host: lethimcook.bieggerm.com
       http:
         paths:
           - path: /
