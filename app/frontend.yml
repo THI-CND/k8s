@@ -39,6 +39,10 @@ metadata:
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
+  tls:
+      - hosts:
+          - lethimcook.bieggerm.com
+        secretName: frontend-tls-staging
   rules:
     - host: lethimcook.bieggerm.com
       http:
