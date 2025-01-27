@@ -37,7 +37,7 @@ metadata:
   name: frontend
   namespace: recipe-app
   annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: web
+    traefik.ingress.kubernetes.io/router.entrypoints: web, websecure
     cert-manager.io/issuer: letsencrypt-staging
 spec:
   tls:
