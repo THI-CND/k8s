@@ -38,6 +38,7 @@ metadata:
   namespace: recipe-app
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: web
+    cert-manager.io/issuer: letsencrypt-staging
 spec:
   tls:
       - hosts:
